@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="zh-CN" class="fullscreen-bg">
+
+<head>
+	<title>浙江省高考志愿推荐系统</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="高考 志愿 填写 推荐">
+	<meta name="description" content="高考志愿填写推荐">
+	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">   
+	
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
+	<!-- main css -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	 
+	<!-- icons
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">-->
+	<!-- select css -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />  
+	<script src="js/Loading.js"></script>
+</head>
+
+<body class="layout-fullwidth text-center">
+<div class="tips">
+        </div>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+		<!--logo
+			<div class="brand">
+				<a href="index.html"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+			</div>
+		-->
+			<div class="brand">
+			 浙江省高考志愿推荐系统
+			</div>
+			<div class="container-fluid">
+				 
+				<div class="navbar-btn navbar-btn-right">
+					<a class="btn btn-success update-pro" href="#"  title="Upgrade to Pro"  target="_blank"><i class="fa fa-rocket"></i> <span>升级到高级版</span></a>
+				</div>
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+						 
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>帮助</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">基本用法</a></li>
+								<li><a href="#">列表说明</a></li>
+								<li><a href="#">充值</a></li>
+								<li><a href="#">其他</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><!--<img src="assets/img/user.png" class="img-circle" alt="Avatar">-->  <span id="userNameId"></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>个人资料</span></a></li>
+								<li><a href="#"><i class="lnr lnr-cog"></i> <span>修改密码</span></a></li>
+								<li><a href="login.html"><i class="lnr lnr-exit"></i> <span>登出</span></a></li>
+							</ul>
+						</li>
+					 
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END NAVBAR -->
+		 
+		<!-- MAIN -->
+		<div class="main" >
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<!--<h3 class="page-title"></h3>-->
+					
+					<!--search form-->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel">
+								
+								<div class="panel-body">
+								
+								<form role="form" class="form-horizontal"  name="recommdationForm"  id="recommdationFormId">
+									<fieldset>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="I_UserLoginName">高考总分:</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" id="scoreTotalId"  disabled/>
+											</div>
+											<label class="col-sm-2 control-label" for="I_UserLoginName">位次号:</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" id="rankId"  disabled/>
+											</div>
+											<div class="col-sm-2"></div> 
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" >高校所在地*：</label>
+											<div class="col-sm-8" align="left">
+												<select class="form-control"  id="provinceId"  name="province" multiple="multiple">
+												</select>
+											</div> 
+											<div class="col-sm-2"></div> 
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" >专业门类*:</label>
+											<div class="col-sm-8" align="left">
+												<select class="form-control"  id="majorLevelOneId" onchange="changeMajorLevelOne();" name="majorLevelOne" multiple="multiple">  
+												</select>
+											</div>
+											<!-- <label class="col-sm-2 control-label" >专业大类:</label>
+											<div class="col-sm-3">
+												<select class="form-control"   id="majorLevelTwoId"  name="majorLevelTwo">
+												</select>
+											</div> -->
+											<div class="col-sm-2"></div>  
+										</div>
+										<div class="form-group">
+										   <label class="col-sm-2 control-label" for="I_UserLoginName">高校分类:</label>
+											<div class="col-sm-3">
+												<select class="form-control"> 
+												<option selected>请选择</option>
+												<option >不限</option>
+												</select>
+											</div>
+											<label class="col-sm-2 control-label" for="I_UserLoginName">排名顺序*:</label>
+											<div class="col-sm-3">
+												<select class="form-control"  id="orderId"  name="order">
+												</select>
+											</div>
+											<div class="col-sm-2"></div> 
+										</div>
+										<!-- 
+										<div class="form-group" >
+										    <label class="col-sm-2 control-label" for="I_UserType">冲：</label>
+											<div class="col-sm-8">
+												<select class="form-control"  name="probability1"> 
+												<option selected value=-1>请选择</option>
+												<option value=1>0%-5%</option>
+												<option value=2>0%-10%</option>
+												<option value=3>0%-20%</option>
+												<option value=4>0%-30%</option>
+												</select>
+											</div> 
+											<div class="col-sm-2"></div> 
+										</div>
+										<div class="form-group">
+										    <label class="col-sm-2 control-label" for="I_UserType">稳：</label>
+											<div class="col-sm-8">
+												<select class="form-control" name="probability2"> 
+												<option selected value=-1>请选择</option>
+												<option value=1>30%-70%</option>
+												<option value=2>40%-70%</option>
+												<option value=3>50%-70%</option>
+												<option value=4>60%-70%</option>
+												</select>
+											</div> 
+											<div class="col-sm-2"></div> 
+										</div>
+										<div class="form-group">
+										    <label class="col-sm-2 control-label" for="I_UserType">保：</label>
+											<div class="col-sm-8">
+												<select class="form-control" name="probability3"> 
+												<option selected value=-1>请选择</option>
+												<option value=1>70%-100%</option>
+												<option value=2>80%-100%</option>
+												<option value=3>90%-100%</option>
+												</select>
+											</div> 
+											<div class="col-sm-2"></div> 
+										</div>
+		  -->
+										 
+										<div class="form-group">
+											<div class="col-sm-2">
+											</div>
+											<div class="col-sm-8">
+												<input type="button" class="btn btn-primary btn-block"   value="查询"   onclick="recommdation(this);" />
+											</div>
+											<div class="col-sm-2">
+											 <input type="button" class="btn btn-primary " onclick="pdf();" value="打印报告" id="pdf"/>  
+											</div>
+										</div>
+									</fieldset>
+								</form>
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--search result-->
+					<div class="row"  id="resultId"  >
+						<div class="col-md-12">
+							<div class="panel" id="table">
+								<div class="panel-body" >
+									<table class="table table-striped" >
+										<thead >
+											<tr><th>学校代码</th>
+												<th>学校名称</th>
+												<th>专业代码</th>
+												<th>专业名称</th>
+												
+												<!-- <th>学校网址</th> -->
+												
+												<th>2017最低分</th>
+											</tr>
+										</thead>
+										<tbody  id="tbodyId" align="left">
+										 
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+		
+	</div>
+	<!-- END WRAPPER -->
+ 
+		
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/jquery/jsrender.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+	<script src="assets/vendor/pdf/js/jspdf.debug.js"></script>
+ 	<script src="assets/vendor/pdf/js/html2canvas.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>  
+ 	
+<!--  	<script src="assets/vendor/pdf/main.js"></script> -->
+<script type="text/javascript">
+$(function(){
+	$('#provinceId').select2({
+		placeholder: "请选择高校地区",
+		tags:true,
+		createTag:function (decorated, params) {
+			return null;
+		},
+		width: '100%'
+		
+	});
+	$('#majorLevelOneId').select2({
+		placeholder: "请选择专业门类",
+		tags:true,
+		createTag:function (decorated, params) {
+			return null;
+		},
+		width:'100%'
+		
+	});
+});
+</script>	
+ <script>
+	var downPdf = document.getElementById("pdf");
+
+    downPdf.onclick = function() {
+        html2canvas(document.body, {
+            onrendered:function(canvas) {
+
+                var contentWidth = canvas.width;
+                var contentHeight = canvas.height;
+
+                //一页pdf显示html页面生成的canvas高度;
+                var pageHeight = contentWidth / 592.28 * 841.89;
+                //未生成pdf的html页面高度
+                var leftHeight = contentHeight;
+                //pdf页面偏移
+                var position = 0;
+                //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                var imgWidth = 595.28;
+                var imgHeight = 592.28/contentWidth * contentHeight;
+                var pageData = canvas.toDataURL('image/jpeg', 1.0);
+                var pdf = new jsPDF('', 'pt', 'a4');
+                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                //当内容未超过pdf一页显示的范围，无需分页
+                if (leftHeight < pageHeight) {
+                    pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight );
+                } else {
+                    while(leftHeight > 0) {
+                        pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                        leftHeight -= pageHeight;
+                        position -= 841.89;
+                        //避免添加空白页
+                        if(leftHeight > 0) {
+                            pdf.addPage();
+                        }
+                    }
+                }
+
+                pdf.save('content.pdf');
+            }
+        })
+    }
+	
+
+	
+	//============recommdation======================
+	$(document).ready(function() {
+		//get score info
+		$.ajax({
+	        type: "get",
+	        url: "user/info",
+	        success: function(data) {
+	          if(data.success==1){
+	        	  $("#scoreTotalId").val(data.data.totalScore);
+	        	  $("#userNameId").html(data.data.userName);
+	        	  $("#rankId").val(data.data.rank);
+	          }else{
+	        	 aler("请重新登录!");
+	        	  window.location.href = "login.html";  
+	          }
+	        }
+	    });
+		
+		//省
+		$.ajax({
+	        type: "get",
+	        url: "common/province",
+	        success: function(data) {
+	          if(data.success==1){ 
+	        	  var h = $.templates("#provinceTempId").render(data);
+	        	 /*  h = "<option  value=-2 >全国</option>" + h; */
+	        	  //h = "<option  value=-1 style=display:none>请选择</option>" + h;
+	        	  $("#provinceId").html(h); 
+	          }
+	        }
+	    });
+		
+		//专业
+		$.ajax({
+	        type: "get",
+	        url: "common/major/level/one",
+	        success: function(data) {
+	          if(data.success==1){ 
+	        	  var h = $.templates("#majorTempId").render(data);
+	        	  //h = "<option  value=-1 >请选择</option>" + h ;
+	        	  $("#majorLevelOneId").html(h); 
+	          }
+	        }
+	    });
+		
+		//排名顺序
+		$.ajax({
+	        type: "get",
+	        url: "common/order",
+	        success: function(data) {
+	          if(data.success==1){ 
+	        	  var h = $.templates("#majorTempId").render(data);
+	        	  h = "<option  value=-1 selected>请选择</option>" +"<option value=9999>综合</option>"+ h;
+	        	  $("#orderId").html(h); 
+	          }
+	        }
+	    });
+		 
+		
+	});//end document ready
+	
+	var changeMajorLevelOne = function( ){
+		var leveOne = $("#majorLevelOneId").val();
+		$.ajax({
+	        type: "get",
+	        url: "common/major/level/two/"+leveOne,
+	        success: function(data) {
+	          if(data.success==1){ 
+	        	  var h = $.templates("#majorTempId").render(data);
+	        	  h = "<option value=-1 selected>请选择</option>" + h;
+	        	  $("#majorLevelTwoId").html(h); 
+	          }
+	          else{
+	        	  var h = $.templates("#majorTempId").render(data);
+	        	  h = "<option value=-1 disabled></option>" + h;
+	        	  $("#majorLevelTwoId").html(h); 
+	          }
+	        }
+	    });
+	}
+	var countdown = 60; 
+	function recommdation(obj){
+	
+		var province = $("#provinceId").val();
+		var leveOne = $("#majorLevelOneId").val();
+		if($("#provinceId").val()==-1){
+			alert("请选择高校所在地！");
+			$("#provinceId").parent().addClass("has-error");
+			$("#provinceId").change(function(){
+				$("#provinceId").parent().removeClass("has-error");
+			});
+			return false; 
+		}
+		
+		if($("#majorLevelOneId").val()==-1){
+			alert("请选择专业门类！");
+			$("#majorLevelOneId").parent().addClass("has-error");
+			$("#majorLevelOneId").change(function(){
+				$("#majorLevelOneId").parent().removeClass("has-error");
+			});
+			return false; 
+		}
+		
+		if($("#orderId").val()==-1){
+			alert("请选择排名顺序！");
+			$("#orderId").parent().addClass("has-error");
+			$("#orderId").change(function(){
+				$("#orderId").parent().removeClass("has-error");
+			});
+			return false; 
+		}
+		 	
+	if(countdown = 60){
+	obj.setAttribute("disabled", true); 
+    obj.value="结果生成中";
+    
+    $.ajax({
+	       url: "common/recommendation/"+leveOne+"/"+province,
+	       type: "post",
+	       data:$("#recommdationFormId").serialize(),
+	       async: true,
+	       success: function (data) {
+	    	   if(data.data.length>0){
+	    		   $("#resultId").css("display","");
+	    		   var h = $.templates("#recommondationListTempId").render(data);
+	    		   $("#tbodyId").html(h);
+	    		   obj.removeAttribute("disabled");    
+			       obj.value="查询"; 
+			       			       
+	    	   }else{
+	    		   $("#resultId").css("display","");
+	    		   $("#tbodyId").html("<tr><td cospan=4>没有推荐结果</td></tr>");
+	    	   }
+	       }		          
+	});
+	}
+	
+	   
+	       
+		
+	}// end recommondation
+	 </script>
+	
+	
+	
+<script id="provinceTempId" type="text/x-jsrender">
+{{for data}}
+<option value={{:id}}>{{:name}}</option>
+{{/for}}
+</script> 
+
+<script id="majorTempId" type="text/x-jsrender">
+{{for data}}
+<option value={{:code}}>{{:major}}</option>
+{{/for}}
+</script> 
+
+<script id="recommondationListTempId" type="text/x-jsrender">
+{{for data}}
+<tr>
+	<td>{{:schoolCode}}</td>
+	<td><a href="http://{{:schoolNet}}" target="_blank">{{:school}}</a></td>	
+	<td>{{:majorCode}}</td>
+	<td>{{:majorDetail}}</td>
+	<td>{{:lowScore}}</td>
+	
+</tr>
+{{/for}}
+</script> 
+<footer id="footer" >
+		<div class="container">
+			<div class="row" >
+			   <div class="col-sm-12 col-xs-12">Copyright &copy; 2017-2020 杭州数翊信息技术有限公司 版权所有. </div> 
+			</div>
+		</div>
+	</footer>
+</body>
+<!--<td>
+	    <div class="progress">
+			{{if probability <=100 && probability>=80}}
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{:probability}}%;">
+	           {{:probability}}%
+	        </div>
+			{{/if}}
+
+			{{if probability>30 && probability <80}}
+			<div class="progress-bar  progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{:probability}}%;">
+	           {{:probability}}%
+	        </div>
+			{{/if}}
+
+			{{if probability<=30}}
+			<div class="progress-bar  progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: {{:probability}}%;">
+	           {{:probability}}%
+	        </div>
+			{{/if}}
+
+	    </div>
+	</td> -->
+</html>

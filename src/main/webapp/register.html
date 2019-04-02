@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="zh-CN" class="fullscreen-bg">
+
+<head>
+	<title>浙江省高考志愿推荐系统</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="高考 志愿 填写 推荐">
+	<meta name="description" content="高考志愿填写推荐">
+	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">   
+	
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="assets/vendor/notifIt/css/notifIt.min.css">
+	
+	<!-- main css from tmp-->
+	<link rel="stylesheet" href="assets/css/main.css">
+ 
+	<!-- ICONS 
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	-->
+</head>
+
+<body class=" text-center ">
+<!--navbar-collapse -->
+    <nav class="navbar  navbar-fixed-top">
+      <div class="container">
+          <a class="navbar-brand" >浙江省高考志愿推荐系统</a>
+          <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          </div>
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+          	<a class="btn btn-primary " href="login.html" role="button">返回 &raquo;</a>
+        </div>
+        </div>
+
+    </nav>
+    <!-- END NAVBAR -->
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<h3 class="page-title text-left">欢迎注册浙江省高考志愿推荐系统</h3>
+					<div class="row">
+						<div class="col-md-10">
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title"></h3>
+								</div>
+								<div class="panel-body">
+								<form role="form"  id="registerFormId"  method="post"  class="form-horizontal"  action="user/register">
+									<fieldset>
+										<div class="form-group">
+											<label class="col-sm-2 control-label"  for="userNameId">用户名:</label>
+											<div class="col-sm-4">
+												<input type="text"  name="userName"  class="form-control"  id="userNameId"  placeholder="用户名"/>
+											</div>
+											 <label class="col-sm-2 control-label"  for="passNoId">准考证号：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="passNo"  class="form-control"  id="passNoId"  placeholder="请输入准考证号"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label"  for="passwordId">密码：</label>
+											<div class="col-sm-4">
+												<input type="password"  name="password"  class="form-control"  id="passwordId"  placeholder="密码"/>
+											</div>
+											<label class="col-sm-2 control-label"  for="confirmPasswordId">确认密码：</label>
+											<div class="col-sm-4">
+												<input type="password"  name="confirmPassword"  class="form-control"  id="confirmPasswordId"  placeholder="确认密码"/>
+											</div>
+										</div>
+										<div class="form-group">
+										    <label class="col-sm-2 control-label"  for="districtId">所在地：</label>
+											<div class="col-sm-10">
+												<select name="district"  class="form-control"  id="districtId"> 
+													<option selected value="-1">请选择所在地</option>
+													<option value="1">杭州</option>
+													<option value="2">宁波</option>
+													<option value="3">温州</option>
+													<option value="4">嘉兴</option>
+													<option  value="5">湖州</option>
+													<option  value="6">台州</option>
+													<option  value="7">金华</option>
+													<option  value="8">绍兴</option>
+													<option  value="9">舟山</option>
+													<option  value="10">衢州</option>
+													<option  value="11">丽水</option>
+												</select>
+											</div>
+										</div>
+										
+										<div class="form-group">
+										<label class="col-sm-2 control-label"  for="rankId">排名：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="rank"  class="form-control"  id="rankId"  placeholder="请输入排名"/>
+											</div>
+											<label class="col-sm-2 control-label"  for="chineseId">语文分数：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="chinese"  class="form-control"  id="chineseId"  placeholder="请输入语文分数"/>
+											</div>
+											 
+										</div>
+										<div class="form-group">
+										    <label class="col-sm-2 control-label"  for="englishId">英语分数：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="english"  class="form-control"  id="englishId"  placeholder="请输入英语分数"/>
+											</div>
+											<label class="col-sm-2 control-label"  for="mathId">数学分数：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="math"  class="form-control"  id="mathId"  placeholder="请输入数学分数"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label"  for="subject1">选考科目一：</label>
+											<div class="col-sm-4">
+												<select class="form-control"   name="subject1"  id="subject1Id"> 
+												<option selected value="-1" >请选择选考科目一</option>
+												<option value="3">物理</option>
+												<option value="4">化学</option>
+												<option value="7">历史</option>
+												<option value="8">地理</option>
+												<option value="5">生物</option>
+												<option value="6">政治</option>
+												<option value="9">技术</option>
+												</select>
+											</div>
+											<label class="col-sm-2 control-label"  for="score1Id">科目一分数：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="score1"  class="form-control"  id="score1Id"  placeholder="请输入科目一分数"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="subject2"  >选考科目二：</label>
+											<div class="col-sm-4">
+												<select class="form-control"   name="subject2"  id="subject2Id"> 
+												<option selected value="-1">请选择选考科目二</option>
+												<option value="3">物理</option>
+												<option value="4">化学</option>
+												<option value="7">历史</option>
+												<option value="8">地理</option>
+												<option value="5">生物</option>
+												<option value="6">政治</option>
+												<option value="9">技术</option>
+												</select>
+											</div>
+											<label class="col-sm-2 control-label"  for="score2Id">科目二分数：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="score2"  class="form-control"  id="score2Id"  placeholder="请输入科目二分数"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="subject3">选考科目三：</label>
+											<div class="col-sm-4">
+												<select class="form-control"   name="subject3" id="subject3Id"> 
+												<option selected value="-1">请选择选考科目三</option>
+												<option value="3">物理</option>
+												<option value="4">化学</option>
+												<option value="7">历史</option>
+												<option value="8">地理</option>
+												<option value="5">生物</option>
+												<option value="6">政治</option>
+												<option value="9">技术</option>
+												</select>
+											</div>
+												<label class="col-sm-2 control-label"  for="score3Id">科目三分数：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="score3"  class="form-control"  id="score3Id"  placeholder="请输入科目三分数"/>
+											</div>
+										</div>
+										<div class="form-group">
+										<label class="col-sm-2 control-label" >图片验证码：</label>
+											<div class="col-sm-4">
+												<img src="authCode/code" alt="验证码" id="authCode"  onclick="changeImg();"/>
+											</div>
+											<label class="col-sm-2 control-label"  for="validateCodeId">输入验证码：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="validateCode"  class="form-control"  id="validateCodeId"  placeholder="请输入图片验证码"/>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="cellphoneId">手机号码：</label>
+											<div class="col-sm-4">
+												<input type="text" name="cellphone" class="form-control"  id="cellphoneId"  placeholder="请输入手机号码"/>
+											</div>
+											<div class="col-sm-4">
+												<input type="button" class="btn btn-primary" id="I_UserOrg" onclick="settime(this)" value="获取手机验证码" />
+											</div>
+											
+										</div>
+										<div class="form-group">
+											<label class="col-sm-2 control-label" for="cellphoneCodeId">手机验证码：</label>
+											<div class="col-sm-4">
+												<input type="text"  name="cellphoneCode" class="form-control" id="cellphoneCodeId" placeholder="请输入手机验证码"  />
+											</div>
+										
+											<label class="fancy-checkbox col-sm-2 control-label ">
+											
+												<input type="checkbox"  name="agreeRules"  id="agreeRulesId"/>
+												<span>同意免责条款</span>
+												</label>
+												
+												<div class="col-sm-2 control-label">
+												<a   onClick=" alert('本高考志愿推荐系统是结合当年的高考招生政策、录取政策和往年的招生名额、投档线、录取名次、专业录取平均分，再参考考生当年高考成绩、职业倾向测试、就读地域意向的基础上开发的软件。因此本推荐系统及工作人员所提供的方案、意见和建议不可避免的存在一定的风险，仅供参考！本网站及工作人员对录取结果不承担任何责任。特此声明！');">阅读免责条款</a>
+											</div>
+										</div>
+										<div class="form-group">
+											
+										</div>
+										<div class="form-group">
+											<div class="col-sm-2">
+											</div>
+											<div class="col-sm-8">
+												<input  type="button"  class="btn btn-primary btn-block"  id="registerId"  onclick=" javascript:validation();"  value="注册"/>
+											</div>
+											<div class="col-sm-2">
+											</div>
+										</div>
+									</fieldset>
+								</form>
+								
+							</div>
+					
+							</div> 
+							 
+						</div>
+						 
+					</div>
+				</div>
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		
+	</div>
+	<!-- END WRAPPER -->
+	 <footer id="footer" >
+		<div class="container">
+			<div class="row" >
+			   <div class="col-sm-12 col-xs-12">Copyright &copy; 2017-2020 杭州数翊信息技术有限公司 版权所有. </div> 
+			</div>
+		</div>
+	</footer>
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+	<script src="assets/vendor/notifIt/js/notifIt.min.js"></script>
+<script>
+
+
+$(document).ready(function() {
+	 
+});
+
+var countdown=60; 
+function settime(obj) { 
+	var cellPhonePattern = /^\d{11}$/; 
+	if (!cellPhonePattern.exec($("#cellphoneId").val())){
+		alert("手机号码格式有误！");
+		$("#cellphoneId").parent().addClass("has-error");
+		$("#cellphoneId").parent().focus();
+		$("#cellphoneId").change(function(){
+			$("#cellphoneId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+    if (countdown == 0) { 
+        obj.removeAttribute("disabled");    
+        obj.value="免费获取验证码"; 
+        countdown = 60; 
+        return;
+        
+    }
+    else if(countdown == 59){
+    	$.ajax({
+ 	       url: "user/find/"+$("#cellphoneId").val(),
+ 	       type: "get",
+ 	       async: true,
+ 	       success: function (data) {
+ 	    	   if(data==0){
+ 	    		   alert("发送短信异常");
+ 	    	   }
+ 	    	   else{
+ 	    	   }
+ 	       }
+ 	 });
+    	obj.setAttribute("disabled", true); 
+        obj.value="重新发送(" + countdown + ")"; 
+    	countdown--; 
+    }
+    else { 
+        obj.setAttribute("disabled", true); 
+        obj.value="重新发送(" + countdown + ")"; 
+        countdown--; 
+    } 
+setTimeout(function() { 
+    settime(obj) }
+    ,1000) 
+}
+
+
+var find = function () {
+	
+	
+	
+}
+
+	
+var validation = function(){
+	
+	var patrnUserName=/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,20}$/;
+	if (!patrnUserName.exec($("#userNameId").val())){
+		notif({
+			  msg: "用户名为5到20个字符，以字母开头，仅限大小写字母和数字！",
+			  type: "warning",
+			  position: "center",
+			  top:200,
+			  time: 1000
+		});
+		$("#userNameId").parent().addClass("has-error");
+		$("#userNameId").parent().focus();
+		$("#userNameId").change(function(){
+			$("#userNameId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	var passwdPattern = /^([a-zA-Z0-9]|[._&*#@]){6,20}$/; ;
+	if (!passwdPattern.exec($("#passwordId").val())){
+		alert("密码为6到20个字符，仅限大小写字母和数字和._&*#@");
+		$("#passwordId").parent().addClass("has-error");
+		$("#passwordId").parent().focus();
+		$("#passwordId").change(function(){
+			$("#passwordId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	if ( $("#confirmPasswordId").val()!=$("#passwordId").val()){
+		alert("两次输入的密码不一致！");
+		return false; 
+	}
+	
+	if($("#districtId").val()==-1){
+		alert("请选择所在地！");
+		$("#districtId").parent().addClass("has-error");
+		$("#districtId").change(function(){
+			$("#districtId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	var passNoPattern = /^\d{1,6}$/; 
+	if (!passNoPattern.exec($("#rankId").val())){
+		alert("请输入正确的排名！");
+		$("#rankId").parent().addClass("has-error");
+		$("#rankId").parent().focus();
+		$("#rankId").change(function(){
+			$("#rankId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	var passNoPattern = /^\d{14}$/; 
+	if (!passNoPattern.exec($("#passNoId").val())){
+		alert("准考证号为14位数字，请确认！");
+		$("#passNoId").parent().addClass("has-error");
+		$("#passNoId").parent().focus();
+		$("#passNoId").change(function(){
+			$("#passNoId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	var scorePattern = /^\d{1,3}$/; 
+	var scoreMax1=150;
+	var scoreMax2=100;
+	if (!scorePattern.exec($("#chineseId").val())){
+		alert("语文分数为1到3位数字，请确认！");
+		$("#chineseId").parent().addClass("has-error");
+		$("#chineseId").parent().focus();
+		$("#chineseId").change(function(){
+			$("#chineseId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	if (scoreMax1<$("#chineseId").val()){
+		alert("语文分数超过最大值，请确认！");
+		$("#chineseId").parent().addClass("has-error");
+		$("#chineseId").parent().focus();
+		$("#chineseId").change(function(){
+			$("#chineseId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	
+	if (!scorePattern.exec($("#mathId").val())){
+		alert("数学分数为1到3位数字，请确认！");
+		$("#mathId").parent().addClass("has-error");
+		$("#mathId").parent().focus();
+		$("#mathId").change(function(){
+			$("#mathId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	if (scoreMax1<$("#mathId").val()){
+		alert("数学分数超过最大值，请确认！");
+		$("#mathId").parent().addClass("has-error");
+		$("#mathId").parent().focus();
+		$("#mathId").change(function(){
+			$("#mathId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	
+	if (!scorePattern.exec($("#englishId").val())){
+		alert("英语分数为1到3位数字，请确认！");
+		$("#englishId").parent().addClass("has-error");
+		$("#englishId").parent().focus();
+		$("#englishId").change(function(){
+			$("#englishId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	if (scoreMax1<$("#englishId").val()){
+		alert("英语分数超过最大值，请确认！");
+		$("#englishId").parent().addClass("has-error");
+		$("#englishId").parent().focus();
+		$("#englishId").change(function(){
+			$("#englishId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	
+		if($("#subject1Id").val()==-1){
+		alert("请选择选考科目一！");
+		$("#subject1Id").parent().addClass("has-error");
+		$("#subject1Id").change(function(){
+			$("#subject1Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	if (!scorePattern.exec($("#score1Id").val())){
+		alert("选考科目一分数为1到3位数字，请确认！");
+		$("#score1Id").parent().addClass("has-error");
+		$("#score1Id").parent().focus();
+		$("#score1Id").change(function(){
+			$("#score1Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	if (scoreMax2<$("#score1Id").val()){
+		alert("选考科目一分数超过最大值，请确认！");
+		$("#score1Id").parent().addClass("has-error");
+		$("#score1Id").parent().focus();
+		$("#score1Id").change(function(){
+			$("#score1Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	if($("#subject2Id").val()==-1){
+		alert("请选择选考科目二！");
+		$("#subject2Id").parent().addClass("has-error");
+		$("#subject2Id").change(function(){
+			$("#subject2Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	if (!scorePattern.exec($("#score2Id").val())){
+		alert("选考科目二分数为1到3位数字，请确认！");
+		$("#score2Id").parent().addClass("has-error");
+		$("#score2Id").parent().focus();
+		$("#score2Id").change(function(){
+			$("#score2Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	if (scoreMax2<$("#score2Id").val()){
+		alert("选考科目二分数超过最大值，请确认！");
+		$("#score2Id").parent().addClass("has-error");
+		$("#score2Id").parent().focus();
+		$("#score2Id").change(function(){
+			$("#score2Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	if($("#subject3Id").val()==-1){
+		alert("请选择选考科目三！");
+		$("#subject3Id").parent().addClass("has-error");
+		$("#subject3Id").change(function(){
+			$("#subject3Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	if (!scorePattern.exec($("#score3Id").val())){
+		alert("选考科目三分数为1到3位数字，请确认！");
+		$("#score3Id").parent().addClass("has-error");
+		$("#score3Id").parent().focus();
+		$("#score3Id").change(function(){
+			$("#score3Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	if (scoreMax2<$("#score3Id").val()){
+		alert("选考科目三分数超过最大值，请确认！");
+		$("#score3Id").parent().addClass("has-error");
+		$("#score3Id").parent().focus();
+		$("#score3Id").change(function(){
+			$("#score3Id").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	var validateCodePattern = /^[a-zA-Z0-9]{4}$/; 
+	if (!validateCodePattern.exec($("#validateCodeId").val())){
+		alert("图片验证码格式有误！");
+		$("#validateCodeId").parent().addClass("has-error");
+		$("#validateCodeId").parent().focus();
+		$("#validateCodeId").change(function(){
+			$("#validateCodeId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	var cellPhonePattern = /^\d{11}$/; 
+	if (!cellPhonePattern.exec($("#cellphoneId").val())){
+		alert("手机号码格式有误！");
+		$("#cellphoneId").parent().addClass("has-error");
+		$("#cellphoneId").parent().focus();
+		$("#cellphoneId").change(function(){
+			$("#cellphoneId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+		 
+	if (!$("#agreeRulesId").prop('checked')){
+		alert("请阅读免责条款，并同意该条款！");
+		$("#agreeRulesId").parent().addClass("has-error");
+		$("#agreeRulesId").parent().focus();
+		$("#agreeRulesId").change(function(){
+			$("#agreeRulesId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+		
+	
+	
+	
+	
+	 $.ajax({
+	       url: "user/findUserByNamel/"+$("#userNameId").val(),
+	       type: "get",
+	       async: true,
+	       success: function (data) {
+	    	   var r =confirm("确认是否正确");
+	    	   if(r==true){
+	         if(data==0){
+	        	 alert("用户名已存在，请用其他用户名注册！");
+	        	return false; 
+	         }else{
+	        	 $.ajax({
+	        	        cache: true,
+	        	        type: "post",
+	        	        url: "user/register",
+	        	        data:$("#registerFormId").serialize(),
+	        	        async: true,
+	        	        success: function(data) {
+	        	        	
+	        	          if(data.success==1){
+	        	        	  alert(data.msg);
+	        	        	  // var result =confirm(data.msg);
+	        	        	  window.location.href = "login.html";  
+	        	          }else{
+	        	        	  alert(data.msg);
+
+	        	          }
+	        	        }
+	        	    });
+	         }
+	    	}
+	    	   else{
+	    		   return false;
+	    	   }
+	         
+	         
+	       }
+	});
+	 
+	//$("#registerFormId").submit();
+ 
+};
+
+
+var changeImg = function (){       
+    $("#authCode").attr("src","authCode/code?d="+new Date().valueOf());       
+}
+</script>
+
+</body>
+
+</html>

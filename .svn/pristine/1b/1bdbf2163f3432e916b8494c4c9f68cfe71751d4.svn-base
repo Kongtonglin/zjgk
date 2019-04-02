@@ -1,0 +1,157 @@
+﻿<!doctype html>
+<html lang="zh-CN" class="fullscreen-bg">
+
+<head>
+	<title>浙江省高考志愿推荐系统</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="高考 志愿 填写 推荐">
+	<meta name="description" content="高考志愿填写推荐">
+	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">   
+	
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	
+	<!-- main css from tmp-->
+	<link rel="stylesheet" href="assets/css/login.css">
+ 
+	<!-- ICONS 
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	-->
+</head>
+
+<body background="assets/img/pp.jpg">
+<!--navbar-collapse -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" >浙江高考查询系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+          <p>
+          	<a class="btn btn-primary " href="optional.jsp" role="button">选考查询 &raquo;</a>
+          	&nbsp;   &nbsp;
+          	<a class="btn btn-primary " href="register.html" role="button">注册 &raquo;</a>
+          	&nbsp;   &nbsp;
+          	<a class="btn btn-primary " href="#" role="button">忘记密码 &raquo;</a>
+          </p>
+        </div>
+      </div>
+    </nav>
+    <!-- END NAVBAR -->
+    
+	<!-- WRAPPER -->
+	<div id="wrapper" >
+		<div class="vertical-align-wrap">
+			<div class="vertical-align-middle">
+				<div class="auth-box ">
+					<div class="left" style="padding-top: 60px;">
+						<div class="content">
+							<div class="header">
+								<div class="logo text-center"><!-- <img src="assets/img/logo-dark.png" alt="Klorofil Logo"> --></div>
+								<!-- <p class="lead ">让最好的你们，遇见更好的大学</p> -->
+								<h1>让最好的你们  </h1>
+								<h1>遇见更好的大学</h1>
+							    
+							</div>
+							<form class="form-auth-small"  method="post" action="user/login"  id="loginFormId">
+							
+								<div class="form-group">
+									<label for="signin-email" class="control-label sr-only">用户名</label>
+									<input type="text"  class="form-control"  id="userNameId"  name="userName" placeholder="用户名">
+								</div>
+								<div class="form-group">
+									<label for="signin-password" class="control-label sr-only">密码</label>
+									<input type="password" class="form-control"  id="passwordId"   name="password"  placeholder="密码">
+								</div>
+								<div class="form-group clearfix">
+									<label class="fancy-checkbox element-left">
+										<input type="checkbox">
+										<span>记住密码</span>
+									</label>
+								</div>
+								<button type="button" class="btn btn-primary btn-lg btn-block" onclick="javascript:login();">登录</button>
+								<!-- <div class="bottom">
+									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">忘记密码?</a></span>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<span class="helper-text"><i class="fa fa-registered"></i> <a href="register.html">注册</a></span>
+								</div> -->
+							</form>
+						</div>
+					</div>
+					  <!-- <div class="right">
+						<div class="overlay"></div>
+						<div class="content text">
+							<h1 class="heading">浙江省高考志愿推荐系统</h1>
+							<p></p>
+						</div>
+					</div>  -->
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END WRAPPER -->
+	
+	<footer id="footer" style="float:left;">
+		<div class="container">
+			<div class="row" >
+			   <div class="col-sm-12 col-xs-12">Copyright &copy; 2017 <!--company name--> All Rights Reserved. </div> 
+			</div>
+		</div>
+	</footer>
+	
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script>
+var login= function(){ 
+	
+	if ($("#userNameId").val()=="" || $("#userNameId").val() ==null){
+		alert("请输入用户名！");
+		$("#userNameId").parent().addClass("has-error");
+		$("#userNameId").parent().focus();
+		$("#userNameId").change(function(){
+			$("#userNameId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	if ($("#passwordId").val()=="" || $("#passwordId").val() ==null){
+		alert("请输入密码！");
+		$("#passwordId").parent().addClass("has-error");
+		$("#passwordId").parent().focus();
+		$("#passwordId").change(function(){
+		$("#passwordId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	 $.ajax({
+	        type: "post",
+	        url: "user/login",
+	        data:$("#loginFormId").serialize(),
+	        async: true,
+	        success: function(data) {
+	          if(data.success==1){
+	        	  window.location.href = "list.html";  
+	          }else{
+	        	  alert(data.msg)
+	          }
+	        }
+	    });
+}
+</script>
+</body>
+
+</html>

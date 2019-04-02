@@ -1,0 +1,300 @@
+﻿
+<!doctype html>
+<html lang="zh-CN" class="fullscreen-bg">
+
+<head>
+	<title>浙江省高考志愿推荐系统</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="高考 志愿 填写 推荐">
+	<meta name="description" content="高考志愿填写推荐">
+	<meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">   
+	
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	
+	<!-- main css from tmp-->
+	<link rel="stylesheet" href="assets/css/main.css">
+ 
+	<!-- ICONS 
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	-->
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+ <script language="JavaScript">
+            function startTime()   
+            {   
+            	
+                var today=new Date();//定义日期对象   test
+                var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年    
+                var MM = today.getMonth()+1;//通过日期对象的getMonth()方法返回年    
+                var dd = today.getDate();//通过日期对象的getDate()方法返回年     
+                var hh=today.getHours();//通过日期对象的getHours方法返回小时   
+                var mm=today.getMinutes();//通过日期对象的getMinutes方法返回分钟   
+                var ss=today.getSeconds();//通过日期对象的getSeconds方法返回秒   
+                // 如果分钟或小时的值小于10，则在其值前加0，比如如果时间是下午3点20分9秒的话，则显示15：20：09   
+                MM=checkTime(MM);
+                dd=checkTime(dd);
+                mm=checkTime(mm);   
+                ss=checkTime(ss);    
+                var day; //用于保存星期（getDay()方法得到星期编号）
+                if(today.getDay()==0)   day   =   "星期日 " 
+                if(today.getDay()==1)   day   =   "星期一 " 
+                if(today.getDay()==2)   day   =   "星期二 " 
+                if(today.getDay()==3)   day   =   "星期三 " 
+                if(today.getDay()==4)   day   =   "星期四 " 
+                if(today.getDay()==5)   day   =   "星期五 " 
+                if(today.getDay()==6)   day   =   "星期六 " 
+                document.getElementById('nowDateTimeSpan').innerHTML=yyyy+"-"+MM +"-"+ dd +" " + hh+":"+mm+":"+ss+"   " + day;   
+                setTimeout('startTime()',1000);//每一秒中重新加载startTime()方法 
+                if(MM==3){
+                	var da=68+(31-dd);
+              		document.getElementById('nowDa').innerHTML=da;
+                }
+                else if(MM==4){
+                	var da=38+(30-dd);
+              		document.getElementById('nowDa').innerHTML=da;
+                }
+                else if(MM==5){
+                	var da=7+(31-dd);
+              		document.getElementById('nowDa').innerHTML=da;
+                }
+                else if(MM==6){
+                	if(dd<7){
+                	var da=7-dd;
+              		document.getElementById('nowDa').innerHTML=da;
+                	}
+                	/* else{
+                		/* var da=26-dd;
+                  		document.getElementById('nowDa').innerHTML=da; */
+                	} */
+                }
+                else{
+                	var da=00;
+              		document.getElementById('nowDa').innerHTML=da;
+                	}
+            }   
+             
+            function checkTime(i)   
+            {   
+                if (i<10){
+                    i="0" + i;
+                }   
+                  return i;
+            }
+        </script>
+        
+<body class="masthead text-center text-white d-flex" onload="startTime()">
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+		<div class="container">
+
+			<div class="container-fluid">
+			
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#example-navbar-collapse">
+						<span class="sr-only">切换导航</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				   <!--<a class="navbar-brand" > <font color="#000" >浙江高考志愿推荐推荐系统</font></a>-->
+				</div>
+			
+				<div class="collapse navbar-collapse navbar-right" id="example-navbar-collapse">
+					<ul class="nav navbar-nav ">
+						<li><a href="index.jsp"><font color="#000">职业倾向测试</font></a></li>
+						<li><a href="optional.jsp"><font color="#000">选考科目推荐</font></a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color="#000">
+								信息查询</font> <b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">历年高校分数线</a></li>
+								<li><a href="#">三位一体信息</a></li>
+								<li><a href="#">国内高校与专业介绍</a></li>
+								<li class="divider"></li>
+								<li><a href="#">专家团队介绍</a></li>
+								<li class="divider"></li>
+								<li><a href="#">联系我们</a></li>
+							</ul>
+						   
+						</li>
+						<li>
+						<a class="navbar-brand "  ><font color="#333" >距离2018年高考志愿填报</font><!-- <font color="#f00" size=20px style="font-weight:bold;font-style:italic;"><span id="nowDa"></span></font>--><font color="#f00" >正在进行中</font> </a>
+						</li>
+						<li > <a class="navbar-brands " > <font color="#000" size=2px><span id="nowDateTimeSpan"></span></font></a>
+						</li>
+						<!-- <li >  <a class="navbar-brands " href="sign.html"  color="#666" size=1px>报名</a>
+						</li> -->
+					   
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+
+	</nav>
+      
+    <!-- END NAVBAR -->
+    
+	<!-- WRAPPER -->
+	<div id="wrapper" >
+
+		<div class="container" style="">
+
+			<div class="row" >
+
+				<div class="col-md-6 col-xs-12 carl_col_3" >
+					
+					<div class="page-header carl_title" style=" ">
+					浙江高考志愿推荐系统
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="container" style="background-image: url( './assets/img/pp.jpg' ); background-repeat: no-repeat; ">
+
+			<div class="row carl_row_1" >
+
+				<div class="col-md-9 carl_col_1" style="height:1px; ">
+
+					&nbsp;
+
+				</div>
+
+				<div class="col-md-3 carl_col_2" >
+
+					<div style="margin-top:26px; ">
+
+						<div class="header">
+							<div class="logo text-center"><!-- <img src="assets/img/logo-dark.png" alt="Klorofil Logo"> --></div>
+							<!-- <p class="lead ">让最好的你们，遇见更好的大学</p> -->
+							<div class="header carl_header">
+								让最好的你们
+								<br>
+								遇见更好的大学
+							</div>
+						</div>
+
+						<form class="form-auth-small"  method="post" action="user/login"  id="loginFormId">
+									
+							<div class="form-group">
+								<label for="signin-email" class="control-label sr-only">用户名</label>
+								<input type="text"  class="form-control"  id="userNameId"  name="userName" placeholder="用户名">
+							</div>
+							<div class="form-group">
+								<label for="signin-password" class="control-label sr-only">密码</label>
+								<input type="password" class="form-control"  id="passwordId"   name="password"  placeholder="密码">
+							</div>
+							<div class="form-group clearfix">
+								<label class="fancy-checkbox element-left">
+									<input type="checkbox">
+									<span>记住密码</span>
+								</label>
+							</div>
+							<button type="button" class="btn btn-primary btn-lg btn-block" onclick="javascript:login();">登录</button>
+								&nbsp;
+							
+							 <div class="bottom">
+								<span class="helper-text"><i class="fa fa-lock"></i> <a href="forgot.html">忘记密码?</a></span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span class="helper-text"><i class="fa fa-registered"></i> <a href="register.html">注册</a></span>
+							</div> 
+
+						</form>
+
+					</div>
+
+				</div>
+
+		</div>
+
+	</div>
+	
+	<!-- END WRAPPER -->
+	 
+	<footer id="footer" >
+		<div class="container">
+
+			<hr/>
+			
+			<div class="row" >
+			   <div class="col-sm-12 col-xs-12">Copyright &copy; 2017-2020 杭州数翊信息技术有限公司 版权所有. </div> 
+			</div>
+		</div>
+	</footer>
+
+	<br>
+
+</div>
+	
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+
+ 
+<script>
+
+var login= function(){ 
+	
+	if ($("#userNameId").val()=="" || $("#userNameId").val() ==null){
+		alert("请输入用户名！");
+		$("#userNameId").parent().addClass("has-error");
+		$("#userNameId").parent().focus();
+		$("#userNameId").change(function(){
+			$("#userNameId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	if ($("#passwordId").val()=="" || $("#passwordId").val() ==null){
+		alert("请输入密码！");
+		$("#passwordId").parent().addClass("has-error");
+		$("#passwordId").parent().focus();
+		$("#passwordId").change(function(){
+		$("#passwordId").parent().removeClass("has-error");
+		});
+		return false; 
+	}
+	
+	 $.ajax({
+	        type: "post",
+	        url: "user/login",
+	        data:$("#loginFormId").serialize(),
+	        async: true,
+	        success: function(data) {
+	          if(data.success==1){
+	        	  window.location.href = "list.html";  
+	          }
+	          else if(data.success==2){
+	        	  window.location.href = "backstage.html";  
+	          }
+	          else{
+	        	  alert(data.msg)
+	          }
+	        }
+	    });
+	 
+}
+</script>
+
+
+
+</body>
+
+</html>
